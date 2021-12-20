@@ -42,7 +42,6 @@ export class Province {
   set demand(arg) {
     return (this._demand = parseInt(arg));
   }
-
   get price() {
     return this._price;
   }
@@ -52,7 +51,6 @@ export class Province {
   get shortfall() {
     return this._demand - this.totalProduction;
   }
-
   get profit() {
     return this.demandValue - this.demandCost;
   }
@@ -72,7 +70,7 @@ export class Province {
       .sort((a, b) => b.cost - a.cost)
       .forEach((producer) => {
         const contribution = Math.min(remainingDemand, producer.production);
-        remainingDemand -= amount;
+        remainingDemand -= contribution;
         result += contribution * producer.cost;
       });
     return result;
