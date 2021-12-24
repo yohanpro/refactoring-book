@@ -7,7 +7,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "mocha **/*.test.js"
+    "test": "mocha ./test/**/*.js",
+    "test:jest": "jest --watchAll --verbose"
   },
   "devDependencies": {
     "mocha": "^9.1.3"
