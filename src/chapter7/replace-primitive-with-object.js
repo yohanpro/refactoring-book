@@ -91,3 +91,45 @@ class Priority {
     this._value = value;
   }
 }
+
+//Priority 객체를 제공하는 게털르 Order 클래스에 만드는 방법
+
+class Priority {
+  constructor(value) {
+    if (value instanceof Priority) {
+      return value;
+    }
+
+    if (Priority.legalValues().includes(value)) {
+      this._value = value;
+    } else {
+      throw new Error(`${value} is not a legal value`);
+    }
+  }
+
+  toString() {
+    return this._value;
+  }
+  get _index() {
+    return Priority.legalValues().findIndex((v) => v === this._value);
+  }
+
+  static legalValues() {
+    return ["normal", "high", "rush"];
+  }
+  equals(other) {
+    return this._value === other._value;
+  }
+  higherThan(other) {
+    return this._index > other._index;
+  }
+  lowerThan(other) {
+    return this._index < other._index;
+  }
+}
+
+//이렇게 작성하면 좀 더 의미있게 사용할 수 있다.
+
+highPriorityCount = orders.filter((o) =>
+  o.priority.higherThan(new Priority("normal"))
+).length;
