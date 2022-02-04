@@ -145,14 +145,15 @@ function setRawDataOfCustomers(arg) {
   customerDataData = new CustomerData(arg);
 }
 
+
 // 데이터 구조 안으로 깊이 들어가서 세터로 뽑아내는 작업을 한다.
 
 //쓰기 예시
-setUsage(customerId, year, month, amount);
 
 function setUsage(customerId, year, month, amount) {
   return (getRawDataOfCustomers()[customerId].usages[year][month] = amount);
 }
+setUsage(customerId, year, month, amount);
 
 // 이 함수를 고객 데이터 클래스로 옮긴다.
 // 사용예시
