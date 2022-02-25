@@ -113,3 +113,5 @@ function totalSalary() {
 function youngestAge() {
   return Math.min(...people.map((p) => p.age));
 }
+
+const getTodos = () => {};
